@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexaBuild AI - Website Generator</title>
+  <link rel="shortcut icon" href="./assets/favicon.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="#header"><i class="fas fa-code"></i> NexaBuild AI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#header">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#input-section" class="nav-btn">Get Started</a></li>
+      </ul>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Header -->
+    <header id="header">
+      <h1><i class="fas fa-code"></i> NexaBuild AI</h1>
+      <p>Transform your ideas into complete websites with AI-powered generation</p>
+    </header>
+
+    <!-- Main Area -->
+    <main>
+      <!-- Input Section -->
+      <div id="input-section" class="input-section">
+        <h2><i class="fas fa-lightbulb"></i> Describe Your Website</h2>
+        <p class="input-description">Be as detailed as possible about the website you want to create. Include information about layout, colors, functionality, and content.</p>
+        <textarea id="prompt" placeholder="Example: Create a modern portfolio website for a photographer with a dark theme, gallery section, about page, and contact form..."></textarea>
+        
+        <div class="button-group">
+          <button id="generate-btn" class="primary-btn"><i class="fas fa-wand-magic-sparkles"></i> Generate Website</button>
+          <button id="reset-btn" class="secondary-btn"><i class="fas fa-redo"></i> Reset</button>
+        </div>
+
+        <!-- Loader and Typing Message -->
+        <div class="loader-container" style="display: none;">
+          <div class="loader" id="loader"></div>
+          <span class="loading-text" id="loading-text"><i class="fas fa-robot"></i> AI is crafting your website...</span>
+        </div>
+      </div>
+
+      <!-- Output Section -->
+      <div class="output-section" id="output-section" style="display: none;">
+        <h2><i class="fas fa-rocket"></i> Your Generated Website</h2>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="preview"><i class="fas fa-eye"></i> Preview</button>
+          <button class="tab-btn" data-tab="html"><i class="fas fa-code"></i> HTML</button>
+          <button class="tab-btn" data-tab="css"><i class="fas fa-paint-brush"></i> CSS</button>
+          <button class="tab-btn" data-tab="js"><i class="fab fa-js"></i> JavaScript</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Preview Tab -->
+          <div id="preview" class="tab-pane active">
+            <div class="preview-header">
+              <button id="open-in-tab-btn" class="action-button" disabled><i class="fas fa-external-link-alt"></i> Open in New Tab</button>
+            </div>
+            <iframe id="preview-frame" title="Website Preview"></iframe>
+          </div>
+
+          <!-- HTML Tab -->
+          <div id="html" class="tab-pane">
+            <div class="code-header">
+              <button class="copy-btn" data-target="html-code"><i class="far fa-copy"></i> Copy HTML</button>
+            </div>
+            <pre><code id="html-code"></code></pre>
+          </div>
+
+          <!-- CSS Tab -->
+          <div id="css" class="tab-pane">
+            <div class="code-header">
+              <button class="copy-btn" data-target="css-code"><i class="far fa-copy"></i> Copy CSS</button>
+            </div>
+            <pre><code id="css-code"></code></pre>
+          </div>
+
+          <!-- JavaScript Tab -->
+          <div id="js" class="tab-pane">
+            <div class="code-header">
+              <button class="copy-btn" data-target="js-code"><i class="far fa-copy"></i> Copy JavaScript</button>
+            </div>
+            <pre><code id="js-code"></code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Features Section -->
+      <div id="features" class="features-section">
+        <h2>Why NexaBuild AI?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-bolt feature-icon"></i>
+            <h3>Fast Generation</h3>
+            <p>Create complete websites in seconds with AI-powered generation</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-code feature-icon"></i>
+            <h3>Production-Ready Code</h3>
+            <p>Get clean, modern HTML, CSS, and JavaScript code ready to use</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-paint-roller feature-icon"></i>
+            <h3>Customizable</h3>
+            <p>Easily modify the generated code to match your specific needs</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- About Section -->
+      <div id="about" class="about-section">
+        <h2>About NexaBuild AI</h2>
+        <div class="about-content">
+          <p>NexaBuild AI is an innovative tool that leverages the power of artificial intelligence to generate complete, functional websites from text descriptions. Our mission is to make web development accessible to everyone, regardless of their coding experience.</p>
+          <p>Built with Google's Gemini AI technology, NexaBuild AI can create responsive websites with clean HTML, CSS, and JavaScript code that you can use immediately or customize to your needs.</p>
+        </div>
+      </div>
+      
+      <!-- Contact Section -->
+      <div id="contact" class="contact-section">
+        <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+        <p class="contact-description">Have questions or feedback? We'd love to hear from you!</p>
+        
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+          <!-- Replace with your Access Key -->
+          <input type="hidden" name="access_key" value="4f47b12a-7112-4b0d-a99b-1a7e847e0da7">
+          
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject of your message" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+          </div>
+          
+          <!-- Honeypot Spam Protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          
+          <!-- Success message display -->
+          <div id="form-status" class="form-status" style="display: none;"></div>
+          
+          <button type="submit" class="primary-btn submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </main>
+
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; <span id="current-year"></span> NexaBuild AI</p>
+      <p>Made with <i class="fas fa-heart"></i> by <a href="https://uttamroy01-portfolio.web.app/" target="_blank">Uttam Roy</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
