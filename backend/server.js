@@ -28,8 +28,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize GoogleGenAI with API key
+const apiKey = process.env.API_KEY;
+if (!apiKey || apiKey === 'your_google_ai_api_key_here') {
+  console.error('⚠️ API_KEY is missing or using the default placeholder value. Please set a valid API key in the .env file.');
+}
+
 const ai = new GoogleGenAI({
-  apiKey: process.env.API_KEY,
+  apiKey: apiKey,
 });
 
 // API endpoint for generating websites

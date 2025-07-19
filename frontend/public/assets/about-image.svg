@@ -1,0 +1,41 @@
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: Arial, sans-serif; font-size: 24px; fill: #4f46e5; }
+    .small-text { font-family: Arial, sans-serif; font-size: 14px; fill: #6b7280; }
+    .line { stroke: #e5e7eb; stroke-width: 2; }
+    .accent { fill: #4f46e5; }
+    .accent-light { fill: rgba(79, 70, 229, 0.2); }
+    .bg-light { fill: #f9fafb; }
+    .card { fill: #ffffff; stroke: #e5e7eb; stroke-width: 2; rx: 8; ry: 8; }
+  </style>
+  
+  <!-- Background Elements -->
+  <circle cx="400" cy="80" r="60" class="accent-light" />
+  <circle cx="100" cy="350" r="40" class="accent-light" />
+  
+  <!-- Main Illustration - Team Concept -->
+  <rect x="50" y="50" width="400" height="300" class="card" />
+  
+  <!-- Team Members -->
+  <circle cx="150" cy="120" r="40" class="accent" />
+  <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="30" fill="white">UR</text>
+  
+  <circle cx="250" cy="120" r="40" fill="#f97316" />
+  <text x="250" y="130" text-anchor="middle" font-family="Arial" font-size="30" fill="white">AI</text>
+  
+  <circle cx="350" cy="120" r="40" fill="#10b981" />
+  <text x="350" y="130" text-anchor="middle" font-family="Arial" font-size="30" fill="white">NB</text>
+  
+  <!-- Connection Lines -->
+  <line x1="190" y1="120" x2="210" y2="120" stroke="#4f46e5" stroke-width="2" />
+  <line x1="290" y1="120" x2="310" y2="120" stroke="#4f46e5" stroke-width="2" />
+  
+  <!-- Mission Statement -->
+  <rect x="100" y="200" width="300" height="100" rx="8" ry="8" class="bg-light" />
+  <text x="250" y="230" text-anchor="middle" class="text">Our Mission</text>
+  <text x="250" y="260" text-anchor="middle" class="small-text">Making web development accessible to everyone</text>
+  <text x="250" y="280" text-anchor="middle" class="small-text">through AI-powered solutions</text>
+  
+  <!-- Title -->
+  <text x="250" y="380" text-anchor="middle" class="text">About NexaBuild AI</text>
+</svg>

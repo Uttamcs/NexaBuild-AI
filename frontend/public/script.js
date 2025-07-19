@@ -160,25 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
     this.style.height = (this.scrollHeight) + "px";
   });
   
-  // Show character count for prompt
-  const maxChars = 1000;
-  let charCountEl = document.createElement("div");
-  charCountEl.className = "char-count";
-  charCountEl.textContent = `0/${maxChars}`;
-  promptInput.parentNode.insertBefore(charCountEl, promptInput.nextSibling);
+  // Character count is now handled in the HTML with the new UI
   
-  promptInput.addEventListener("input", function() {
-    const count = this.value.length;
-    charCountEl.textContent = `${count}/${maxChars}`;
-    
-    if (count > maxChars) {
-      charCountEl.classList.add("char-count-exceeded");
-    } else {
-      charCountEl.classList.remove("char-count-exceeded");
-    }
-  });
+  // Character count is now handled directly in the HTML with the new UI
   
   // Generate website
+  // Define maximum characters allowed
+  const maxChars = 1000;
+  
   generateBtn.addEventListener("click", async () => {
     const prompt = promptInput.value.trim();
     if (!prompt) {
@@ -201,8 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let response = null;
 
     try {
-      // Use relative URL for API endpoint
-      response = await fetch("/api/generate", {
+      // Use absolute URL for API endpoint to ensure it works in development
+      response = await fetch("http://localhost:5000/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -210,7 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ prompt }),
       });
 
-      if (!response.ok) throw new Error("Failed to generate website");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to generate website");
+      }
 
       const data = await response.json();
 
@@ -353,23 +345,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
   
-  // Example prompts
-  const examplePrompts = [
-    "Create a portfolio website for a photographer with a dark theme, gallery section, and contact form",
-    "Build a landing page for a mobile app with features section, testimonials, and download buttons",
-    "Design a restaurant website with menu, reservation form, and location map"
-  ];
+  // Example prompts are now handled with suggestion chips in the HTML
   
-  // Add example prompt button
-  const exampleBtn = document.createElement("button");
-  exampleBtn.className = "secondary-btn example-btn";
-  exampleBtn.innerHTML = "<i class='fas fa-lightbulb'></i> Try an Example";
-  document.querySelector(".button-group").appendChild(exampleBtn);
+  // Toast notification system
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toast-message');
   
-  exampleBtn.addEventListener("click", () => {
-    const randomPrompt = examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
-    promptInput.value = randomPrompt;
-    promptInput.dispatchEvent(new Event("input")); // Trigger the input event for auto-resize
-    promptInput.focus();
-  });
+  function showToast(message, type = "info") {
+    toastMessage.textContent = message;
+    toast.className = `toast toast-${type} show`;
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
 });
