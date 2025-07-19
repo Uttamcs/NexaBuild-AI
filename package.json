@@ -7,9 +7,10 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "cd backend && node server.js",
+    "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && node server.js",
-    "build": "echo \"No build step required\""
+    "build": "echo \"No build step required\"",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
   },
   "engines": {
     "node": ">=18.0.0"
