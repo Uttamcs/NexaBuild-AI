@@ -201,8 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let response = null;
 
     try {
-      // Updated API endpoint to point to the backend
-      response = await fetch("http://localhost:5000/api/generate", {
+      // Use relative URL for API endpoint
+      response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

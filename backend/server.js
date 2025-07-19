@@ -12,10 +12,9 @@ const port = process.env.PORT || 5000;
 
 // CORS configuration
 const corsOptions = {
-  origin: [
-    "http://localhost:3000", // Frontend server
-    "http://localhost:5000"  // For direct API access
-  ],
+  origin: process.env.NODE_ENV === 'production' 
+    ? [process.env.VERCEL_URL, /\.vercel\.app$/] 
+    : ["http://localhost:3000", "http://localhost:5000"],
   methods: ["POST", "OPTIONS", "GET"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
